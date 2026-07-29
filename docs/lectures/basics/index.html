@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://inria-emeraude.github.io/ujm-intro-Computer-music/lectures/basics/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title> 1. Basics  - Computer Music Workshop @ UJM (M1 CCNT)</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Computer Music Workshop @ UJM (M1 CCNT)</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Cours</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page"> 1. Basics </a>
+</li>
+                                    
+<li>
+    <a href="../signals/" class="dropdown-item"> 2. Signals in Faust, AM, and Subtractive Synthesis </a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://faustide.grame.fr" class="nav-link">Faust IDE</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../signals/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#basics" class="nav-link">Basics</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#key-points" class="nav-link">Key Points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#assignment" class="nav-link">Assignment</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#problem-1-adding-two-signals-3-points" class="nav-link">Problem 1: Adding Two Signals (3 Points)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#problem-2-changing-the-gain-of-a-signal-2-points" class="nav-link">Problem 2: Changing the Gain of a Signal (2 Points)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#problem-3-sampling-rate-1-point" class="nav-link">Problem 3: Sampling Rate (1 Point)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#project-14-points" class="nav-link">Project (14 Points)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="basics">Basics</h1>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://faust.grame.fr">Faust</a> online editor: <a href="https://faustide.grame.fr">https://faustide.grame.fr</a></li>
+<li>Faust documentation: <a href="https://faustdoc.grame.fr">https://faustdoc.grame.fr</a></li>
+<li>Faust signal-processing library documentation: <a href="https://faustlibraries.grame.fr">https://faustlibraries.grame.fr</a></li>
+<li>Additional information on sampling theory (in French) can be found here: <a href="https://inria-emeraude.github.io/ujm-acoustique/lectures/son-numerique/">https://inria-emeraude.github.io/ujm-acoustique/lectures/son-numerique/</a></li>
+<li>Additional information on sampling theory (in English) can be found here: <a href="https://inria-emeraude.github.io/son-ens/lectures/audio-dsp/">https://inria-emeraude.github.io/son-ens/lectures/audio-dsp/</a></li>
+</ul>
+<h2 id="key-points">Key Points</h2>
+<ul>
+<li>To run the program, press the "Run" button.</li>
+<li>Code for a sine-wave oscillator with a fixed frequency:</li>
+</ul>
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+process = os.osc(440);
+-->
+</faust-editor>
+</p>
+
+<ul>
+<li>Note that <code>import("stdfaust.lib");</code> is required in order to call <code>os.osc</code>.</li>
+<li>Code for an oscillator with a dynamic frequency:</li>
+</ul>
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+freq = hslider("freq",440,50,1000,0.01);
+process = os.osc(freq);
+-->
+</faust-editor>
+</p>
+
+<ul>
+<li>The waveform produced by this program can be viewed by clicking "Plot First Samples" and opening the “Plot” tab:</li>
+</ul>
+<p><img src="../../res/sine.jpg" width="100%" class="mx-auto d-block"></p>
+<ul>
+<li>The list of samples (values) produced by the program can be viewed by clicking "oscilloscope" in the upper-left corner of the waveform window until the “data” view appears:</li>
+</ul>
+<p><img src="../../res/sine_data.jpg" width="100%" class="mx-auto d-block"></p>
+<ul>
+<li>A digital signal (a list of values) such as the one in the previous figure can be denoted mathematically as <script type="math/tex">x(n)</script>.</li>
+<li>These values are sent directly by the computer to the sound card/audio interface, whose role is to "transform" them into an analog signal.</li>
+<li>The sampling rate is the number of values (samples) per second. It is denoted mathematically by <script type="math/tex">f_s</script>.</li>
+<li>The highest frequency that can be sampled is called the Nyquist frequency and is equal to <script type="math/tex">f_s/2</script>.</li>
+<li>The standard range of a digital signal is -1.0 to +1.0. If sample values exceed this range, the resulting sound will be clipped.</li>
+<li>The line:</li>
+</ul>
+<pre><code>process = os.osc(freq);
+</code></pre>
+<p>from the previous code can be changed to generate other waveforms:</p>
+<pre><code>process = os.triangle(freq); // triangle wave
+process = os.square(freq); // square wave
+process = os.sawtooth(freq); // sawtooth wave
+process = no.noise; // white noise
+</code></pre>
+<ul>
+<li>Each waveform produces a different sound and has specific <a href="https://fr.wikipedia.org/wiki/Harmonique_(musique)">harmonic content</a>, which can be viewed with the spectroscope in the editor's right-hand window:</li>
+</ul>
+<p><img src="../../res/spectro.jpg" width="100%" class="mx-auto d-block"></p>
+<ul>
+<li>Adding signals is equivalent to mixing them:</li>
+</ul>
+<pre><code>process = os.sawtooth(500) + os.triangle(400);
+</code></pre>
+<ul>
+<li>Here, a sawtooth wave and a triangle wave are mixed.</li>
+<li>Subtracting signals is equivalent to mixing them with a phase inversion:</li>
+</ul>
+<pre><code>process = os.sawtooth(500) - os.triangle(400);
+</code></pre>
+<ul>
+<li>When signals are added, the resulting signal may clip (yes, yes, 1 + 1 = 2...).</li>
+<li>Multiplying or dividing a signal by a constant changes its gain:</li>
+</ul>
+<pre><code>process = os.sawtooth(500)*0.5;
+</code></pre>
+<ul>
+<li>Defining the <code>freq</code>, <code>gain</code>, and <code>gate</code> parameters in Faust code allows it to be controlled with a polyphonic MIDI keyboard:</li>
+</ul>
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+freq = hslider("freq",440,50,1000,0.01);
+gain = hslider("gain",1,0,1,0.01);
+gate = button("gate");
+process = os.sawtooth(freq)*gain*gate;
+-->
+</faust-editor>
+</p>
+
+<ul>
+<li>For this to work in the <a href="https://faustide.grame.fr">web editor</a>, "Activate MIDI polyphonic mode" must be enabled.</li>
+</ul>
+<h2 id="assignment">Assignment</h2>
+<ul>
+<li>This assignment must be emailed to Romain <strong>before 23/09/2026 (9 am)</strong>.</li>
+<li>Put the answers to Problems 1 and 2 directly in the body of your email.</li>
+<li>Remember to attach the project code and include the link to your demo video.</li>
+<li>You are not alone! Feel free to email your questions if you get stuck.</li>
+</ul>
+<h3 id="problem-1-adding-two-signals-3-points">Problem 1: Adding Two Signals (3 Points)</h3>
+<p>The first four samples of signals <script type="math/tex">x_0(n)</script> and <script type="math/tex">x_1(n)</script> are defined as:</p>
+<p>
+<script type="math/tex">x_0(n) = \{0.432,0.547,-0.892,-0.795\}</script>
+</p>
+<p>
+<script type="math/tex">x_1(n) = \{-0.544,-0.341,-0.690,0.211\}</script>
+</p>
+<p>Let <script type="math/tex">y(n) = x_0(n) + x_1(n)</script>.</p>
+<p><strong>Calculate the values of the first four samples of <script type="math/tex">y(n)</script>.</strong></p>
+<h3 id="problem-2-changing-the-gain-of-a-signal-2-points">Problem 2: Changing the Gain of a Signal (2 Points)</h3>
+<p>The first four samples of signal <script type="math/tex">x(n)</script> are defined as:</p>
+<p>
+<script type="math/tex">x(n) = \{0.432,0.547,-0.892,-0.795\}</script> (so <script type="math/tex">x(n) = x_0(n)</script>: yes, yes, I am a little lazy too... ;) )</p>
+<p>We want to reduce the gain of $x(n)$ by half, so we define:</p>
+<p>
+<script type="math/tex; mode=display">
+y(n) = \frac{x(n)}{2}
+</script>
+</p>
+<p><strong>Calculate the values of the first four samples of <script type="math/tex">y(n)</script>.</strong></p>
+<h3 id="problem-3-sampling-rate-1-point">Problem 3: Sampling Rate (1 Point)</h3>
+<p>Signal <script type="math/tex">x(n)</script> has a sampling rate of <script type="math/tex">f_s=96KHz</script>. <strong>What is the Nyquist frequency of this signal?</strong></p>
+<h3 id="project-14-points">Project (14 Points)</h3>
+<ul>
+<li>Design a musical instrument in Faust that can be controlled in the online editor with a MIDI keyboard or computer keyboard.</li>
+<li>The instrument must contain at least two sound generators (e.g., an oscillator or white noise).</li>
+<li>Be creative and feel free to try connecting things together. For example, one oscillator could control another:</li>
+</ul>
+<pre><code>import(&quot;stdfaust.lib&quot;);
+process = os.sawtooth(440 + os.osc(10)*100);
+</code></pre>
+<ul>
+<li>Think about how your instrument could fit into your own musical practice.</li>
+<li>When the instrument is ready, make a short demonstration video (cell phones are fine). It may simply document the instrument, show you jamming with your new favorite instrument, etc.—the choice is yours.</li>
+<li>Post the video online (e.g., YouTube).</li>
+<li>Send the video link and the Faust code for your instrument to Romain.</li>
+<li>Most importantly, have fun!</li>
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

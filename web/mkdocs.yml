@@ -1,0 +1,40 @@
+site_name: Computer Music Workshop @ UJM (M1 CCNT)
+site_description: Computer Music Workshop course at UJM
+nav:
+    - Cours:
+        - ' 1. Basics ' : lectures/basics.md
+        - ' 2. Signals in Faust, AM, and Subtractive Synthesis ' : lectures/signals.md
+    - Faust IDE: https://faustide.grame.fr
+
+theme: 
+  name: yeti
+  navigation_depth: 3
+
+site_dir: ../docs
+site_url: https://inria-emeraude.github.io/ujm-intro-Computer-music/
+
+extra:
+    social:
+        - type: github
+          link: https://inria-emeraude.github.io/ujm-intro-Computer-music/
+        - type: home
+          link: https://inria-emeraude.github.io/ujm-intro-Computer-music/
+        - type: envelope
+          link: mailto:romain.michon@univ-st-etienne.fr
+
+plugins:
+  - search
+
+extra_css: [extra.css]
+
+extra:
+  search:
+    language: en
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math
+    - markdown_include.include:
+        base_path: './docs'

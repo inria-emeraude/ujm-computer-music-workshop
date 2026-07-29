@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Computer Music Workshop course at UJM">
+        
+        <link rel="canonical" href="https://inria-emeraude.github.io/ujm-intro-Computer-music/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Computer Music Workshop @ UJM (M1 CCNT)</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Computer Music Workshop @ UJM (M1 CCNT)</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Cours</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="lectures/basics/" class="dropdown-item"> 1. Basics </a>
+</li>
+                                    
+<li>
+    <a href="lectures/signals/" class="dropdown-item"> 2. Signals in Faust, AM, and Subtractive Synthesis </a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://faustide.grame.fr" class="nav-link">Faust IDE</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#computer-music-workshop" class="nav-link">Computer Music Workshop</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#instructor" class="nav-link">Instructor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#schedule-and-course-material" class="nav-link">Schedule and Course Material</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#assessment-criteria" class="nav-link">Assessment Criteria</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="computer-music-workshop">Computer Music Workshop</h1>
+<p>The <em>Computer Music Workshop</em> course is offered as part of the CCNT Master's program at Jean Monnet University in Saint-Étienne (France). Its purpose is to provide theoretical and practical foundations for computer programming in the context of real-time audio signal processing. Topics include sampling theory, the manipulation of digital signals for sound synthesis and processing, the Faust programming language, and real-time control of these systems. By the end of the course, students will be able to create their own programs for sound processing and synthesis.</p>
+<p>The following topics are covered (with some flexibility ;) ):</p>
+<ul>
+<li>Digital audio fundamentals (sampling)</li>
+<li>Introduction to programming in <a href="https://faust.grame.fr">Faust</a></li>
+<li><a href="https://faustide.grame.fr">Faust Web IDE</a></li>
+<li>Using elements from the libraries</li>
+<li>Basic signal operations (connection, split, merge, etc.)</li>
+<li>Basic mathematical operations</li>
+<li>etc.</li>
+<li>Fundamental sound synthesis and processing techniques in Faust (signal processing)</li>
+<li>Additive synthesis</li>
+<li>Subtractive synthesis</li>
+<li>AM</li>
+<li>FM</li>
+<li>Basic filters</li>
+<li>Distortion</li>
+<li>Flanger</li>
+<li>Echo</li>
+<li>Using Faust to create plug-ins, externals, etc.</li>
+<li>Controlling objects produced with Faust (MIDI + microcontrollers)</li>
+</ul>
+<h2 id="instructor">Instructor</h2>
+<p><a href="https://ccrma.stanford.edu/~rmichon">Romain MICHON</a> ((romain.michon@univ-st-etienne.fr)[mailto:romain.michon@univ-st-etienne.fr]). Feel free to reach out to him at any point during the semester. </p>
+<h2 id="schedule-and-course-material">Schedule and Course Material</h2>
+<p>The course takes place during the first 6 weeks of the semester on Wednesdays 9-11am starting on September 9th, 2026. </p>
+<p>All the course material is available on this website in the <code>lectures</code> tab in the meny above. </p>
+<p>The course is organized into 4 lectures spread out over 6 sessions. Take home assignments are assigned at the end of each lecture and are due 2 weeks later. </p>
+<!--
+## Final Project
+
+* **Submission deadline: January 31, 2026**
+* **Objectives:** The goal of this project is to create a tool/instrument in Faust and use it in a musical context (e.g., a piece, installation, popular music, etc.). This tool/instrument may target any Faust architecture (e.g., a Max/MSP or Pure Data object, a VST/AU plug-in, an Android/iOS application, etc.).
+* **Deliverables:**
+    * A `.zip` package containing the source code of your tool and a README (in English) explaining how to use and compile it (e.g., with the online editor), etc. This package will be distributed on the course website so that others can benefit from it. The goal is therefore to produce something polished and potentially useful to other community members.
+    * A link (e.g., YouTube) to a demonstration video organized in two parts: first, a demo of your tool/instrument; second, a short piece in which the tool/instrument is used. The piece may also be recorded live during a jam session, band rehearsal, etc. Ideally, the commentary in the video should be in English. Feel free to use text if you do not feel comfortable speaking. Once again, the goal is for your work to be seen and benefit as many people as possible.
+-->
+
+<h2 id="assessment-criteria">Assessment Criteria</h2>
+<ul>
+<li>Continuous assessment: 60%</li>
+<li>Attendance: -20% for each unjustified absence</li>
+<li>One take-home assignment (mini-project) at the end of each lecture. Students have 2 weeks to submit their assignment. Late submissions will not be accepted.</li>
+<li>Final project: 40%</li>
+<li>Resit exam: noooo pleeeaaaase :((</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-07-29 07:33:47.117507+00:00
+-->

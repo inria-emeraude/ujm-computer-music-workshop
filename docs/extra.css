@@ -1,0 +1,35 @@
+html {
+  zoom: 125%;
+}
+
+.navbar{
+  font-size: 1.1rem;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+
+.navbar-brand{
+  font-size: 1.4rem;
+  margin-right: 50px;
+}
+
+.nav-link[rel="next"] {display: none;}
+.nav-link[rel="prev"] {display: none;}
+
+/*
+.nav-item{
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+
+.dropdown-toggle{
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.dropdown-item{
+  font-size: 1rem;
+}
+*/
