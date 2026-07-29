@@ -31,7 +31,7 @@ The following topics are covered (with some flexibility ;) ):
 
 The course takes place during the first 6 weeks of the semester on Wednesdays 9-11am starting on September 9th, 2026. 
 
-All the course material is available on this website in the `lectures` tab in the meny above. 
+All the course material is available on this website in the `lectures` tab in the menu above. 
 
 The course is organized into 4 lectures spread out over 6 sessions. Take home assignments are assigned at the end of each lecture and are due 2 weeks later. 
 

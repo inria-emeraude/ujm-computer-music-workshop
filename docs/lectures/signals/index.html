@@ -46,6 +46,14 @@
 <li>
     <a href="./" class="dropdown-item active" aria-current="page"> 2. Signals in Faust, AM, and Subtractive Synthesis </a>
 </li>
+                                    
+<li>
+    <a href="../delays/" class="dropdown-item"> 3. Delays, Filters, and Related Effects </a>
+</li>
+                                    
+<li>
+    <a href="../recursion/" class="dropdown-item"> 4. Recursion, IIR Filters, Echo, and Physical Modeling </a>
+</li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -65,7 +73,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../delays/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -128,52 +136,70 @@
 <h2 id="faust-targets">Faust Targets</h2>
 <ul>
 <li>An overview of Faust targets is provided in the language documentation: <a href="https://faustdoc.grame.fr/manual/tools/#faust2-tools">https://faustdoc.grame.fr/manual/tools/#faust2-tools</a>.</li>
-<li>Most of them are available through the “Export” function (truck icon) in the <a href="https://faustide.grame.fr">online editor</a>.</li>
+<li>Most of them are available through the "Export" function (truck icon) in the <a href="https://faustide.grame.fr">online editor</a>.</li>
 </ul>
 <h2 id="signal-algebra-in-faust">Signal Algebra in Faust</h2>
 <ul>
 <li>Faust's diagram composition operators are described in detail in the corresponding section of the language documentation: <a href="https://faustdoc.grame.fr/manual/syntax/#diagram-expressions">https://faustdoc.grame.fr/manual/syntax/#diagram-expressions</a>.</li>
-<li>You are advised to read the entire “Diagram Expressions” section.</li>
+<li>You are advised to read the entire "Diagram Expressions" section.</li>
 </ul>
 <h2 id="panning">Panning</h2>
 <ul>
 <li>A panner controlling the amount of signal sent to two separate channels can be implemented quite simply in Faust:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-panner(p) = _ &lt;: *(1-p),*(p);
-pan = hslider(&quot;pan&quot;,0,0,1,0.01) : si.smoo;
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+panner(p) = _ <: *(1-p),*(p);
+pan = hslider("pan",0,0,1,0.01) : si.smoo;
 process = panner(pan);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>If clicks occur, the signal produced by a user-interface element can be smoothed using <code>si.smoo</code>.</li>
 </ul>
 <h2 id="auto-pan">Auto Pan</h2>
 <ul>
-<li>The <code>panner</code> function from the previous step can be reused to implement an “auto pan” effect by controlling the <code>pan</code> parameter with a low-frequency oscillator (LFO):</li>
+<li>The <code>panner</code> function from the previous step can be reused to implement an "auto pan" effect by controlling the <code>pan</code> parameter with a low-frequency oscillator (LFO):</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-panner(p) = _ &lt;: *(1-p),*(p);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+panner(p) = _ <: *(1-p),*(p);
 autoPan(freq,depth) = panner(p) 
 with{
   p = 0.5 + os.osc(freq)*0.25*depth;
 };
-d = hslider(&quot;depth&quot;,0,0,1,0.01) : si.smoo;
-f = hslider(&quot;freq&quot;,1,0.01,10,0.01) : si.smoo;
+d = hslider("depth",0,0,1,0.01) : si.smoo;
+f = hslider("freq",1,0.01,10,0.01) : si.smoo;
 process = autoPan(f,d);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <h2 id="ring-modulation-amplitude-modulation">Ring Modulation (Amplitude Modulation)</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Ring_modulation">Ring modulation</a> consists in modulating the amplitude of a signal with an oscillator.</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 ringMod(freq,depth) = *(1-mod)
 with{
   mod = (os.osc(freq)*0.5 + 0.5)*depth;
 };
-d = hslider(&quot;depth&quot;,0,0,1,0.01) : si.smoo;
-f = hslider(&quot;freq&quot;,100,0.01,5000,0.01) : si.smoo;
+d = hslider("depth",0,0,1,0.01) : si.smoo;
+f = hslider("freq",100,0.01,5000,0.01) : si.smoo;
 process = ringMod(f,d);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>When ring modulation is applied to a sinusoid, sidebands appear with the following distribution: <a href="https://ccrma.stanford.edu/~jos/st/Example_AM_Spectra.html">https://ccrma.stanford.edu/~jos/st/Example_AM_Spectra.html</a></li>
 </ul>
@@ -187,57 +213,76 @@ process = ringMod(f,d);
 <li><a href="https://faustlibraries.grame.fr/libs/filters/#filowpass"><code>fi.highpass</code></a>: Butterworth high-pass</li>
 </ul>
 </li>
-<li>Subtractive synthesis consists in filtering a spectrally rich sound to “sculpt” its spectrum.</li>
+<li>Subtractive synthesis consists in filtering a spectrally rich sound to "sculpt" its spectrum.</li>
 <li>This type of synthesis can easily be implemented in Faust:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 subSynth(freq,ctFreq) = os.sawtooth(freq) : fi.lowpass(3,ctFreq);
-f = hslider(&quot;freq&quot;,400,50,5000,0.01);
-cf = hslider(&quot;ctFreq&quot;,5000,50,10000,0.01) : si.smoo;
-gain = hslider(&quot;gain&quot;,1,0,1,0.01);
-gate = button(&quot;gate&quot;);
+f = hslider("freq",400,50,5000,0.01);
+cf = hslider("ctFreq",5000,50,10000,0.01) : si.smoo;
+gain = hslider("gain",1,0,1,0.01);
+gate = button("gate");
 envelope = en.adsr(0.1,0.01,0.8,0.1,gate)*gain;
 process = subSynth(f,cf*(0.5+envelope*0.5))*envelope;
 effect = dm.zita_light;
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>Resonant filters behave more aggressively depending on their <em>Q</em> value:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 subSynth(freq,ctFreq,q) = os.sawtooth(freq) : fi.resonlp(ctFreq,q,1);
-f = hslider(&quot;freq&quot;,400,50,5000,0.01);
-cf = hslider(&quot;ctFreq&quot;,5000,50,10000,0.01) : si.smoo;
-q = hslider(&quot;q&quot;,5,1,20,0.01) : si.smoo;
-gain = hslider(&quot;gain&quot;,1,0,1,0.01);
-gate = button(&quot;gate&quot;);
+f = hslider("freq",400,50,5000,0.01);
+cf = hslider("ctFreq",5000,50,10000,0.01) : si.smoo;
+q = hslider("q",5,1,20,0.01) : si.smoo;
+gain = hslider("gain",1,0,1,0.01);
+gate = button("gate");
 envelope = en.adsr(0.1,0.01,0.8,0.1,gate)*gain;
 process = subSynth(f,cf*(0.5+envelope*0.5),q)*envelope;
 effect = dm.zita_light;
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>Resonant filters can also be used to synthesize sound:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
-impFreq = hslider(&quot;impFreq&quot;,7,1,20,0.01) : si.smoo;
-q = hslider(&quot;q&quot;,20,1,30,0.01) : si.smoo;
-freq = hslider(&quot;freq&quot;,440,50,5000,0.01);
-gain = hslider(&quot;gain&quot;,1,0,1,0.01);
-gate = button(&quot;gate&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
+impFreq = hslider("impFreq",7,1,20,0.01) : si.smoo;
+q = hslider("q",20,1,30,0.01) : si.smoo;
+freq = hslider("freq",440,50,5000,0.01);
+gain = hslider("gain",1,0,1,0.01);
+gate = button("gate");
 process = os.lf_imptrain(impFreq) : fi.resonlp(freq,q,1)*gain*gate*4;
 effect = dm.zita_light;     
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <h2 id="assignment-object-generated-with-faust">Assignment: Object Generated With Faust</h2>
 <ul>
-<li>This assignment must be sent to me by email <strong>before 04/12/2025 (9:00 a.m.)</strong> at: romain_POINT_michon_AT_inria_POINT_fr.</li>
-<li>The goal is to use the Faust online IDE's Export function to produce an “object” of your choice: a smartphone application, web application, plug-in, etc.</li>
+<li>This assignment must be sent to me by email to Romain <strong>before ??? (9 am)</strong>.</li>
+<li>The goal is to use the Faust online IDE's Export function to produce an "object" of your choice: a smartphone application, web application, plug-in, etc.</li>
 <li>Experiment with the synthesis techniques studied in Sessions 1 and 2, and implement mappings that allow them to be controlled in subtle ways.</li>
-<li>Put yourself in the shoes of a “digital instrument maker” and build a meaningful instrument or “sound toy.”</li>
+<li>Put yourself in the shoes of a “digital instrument maker” and build a meaningful instrument or "sound toy."</li>
 <li>Be creative and have fun!</li>
 <li>Feel free to go beyond what is required and challenge yourself! :)</li>
 <li>When your instrument is ready, make a short demonstration video (cell phones are fine).</li>
 <li>Post the video online (e.g., YouTube).</li>
-<li>Send me the video link and the Faust code for your instrument: romain_POINT_michon_AT_inria_POINT_fr.</li>
-</ul></div>
+<li>Send me the video link and the Faust code for your instrument to Romain.</li>
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script></div>
             </div>
         </div>
 

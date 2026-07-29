@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://inria-emeraude.github.io/ujm-intro-Computer-music/lectures/recursion/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Recursion, IIR Filters, Echo, and Physical Modeling - Computer Music Workshop @ UJM (M1 CCNT)</title>
+        <title> 4. Recursion, IIR Filters, Echo, and Physical Modeling  - Computer Music Workshop @ UJM (M1 CCNT)</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Cours</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Cours</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -45,6 +45,14 @@
                                     
 <li>
     <a href="../signals/" class="dropdown-item"> 2. Signals in Faust, AM, and Subtractive Synthesis </a>
+</li>
+                                    
+<li>
+    <a href="../delays/" class="dropdown-item"> 3. Delays, Filters, and Related Effects </a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page"> 4. Recursion, IIR Filters, Echo, and Physical Modeling </a>
 </li>
                                 </ul>
                             </li>
@@ -59,6 +67,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../delays/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -114,19 +132,32 @@
 <h2 id="recursion-in-faust">Recursion in Faust</h2>
 <ul>
 <li>Recursion in Faust can be expressed with <a href="https://faustdoc.grame.fr/manual/syntax/#recursive-composition">recursive composition <code>~</code></a>.</li>
-<li>The equation $y(n) = x(n) + y(n-1)$ can be implemented in Faust as follows:</li>
+<li>The equation <script type="math/tex">y(n) = x(n) + y(n-1)</script> can be implemented in Faust as follows:</li>
 </ul>
-<pre><code>process = +~_;
-</code></pre>
+<p>
+<faust-editor>
+<!--
+process = +~_;
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>The expression on the left of the operator corresponds to the signal traveling from left to right in the block diagram, and the expression on the right to the signal traveling from right to left.</li>
 <li>This type of construction can be used to implement counters:</li>
 </ul>
-<pre><code>process = _~+(1) : -(1);
-</code></pre>
-<p>This produces the signal: $y(n) = 0,1,2,3,4,...$</p>
+<p>
+<faust-editor>
+<!--
+process = _~+(1) : -(1);
+-->
+</faust-editor>
+</p>
+
+<p>This produces the signal: <script type="math/tex">y(n) = 0,1,2,3,4,...</script>
+</p>
 <ul>
-<li><code>~</code> automatically introduces a one-sample delay in the recursive signal. This is necessary because the equation $y(n) = x(n) + y(n)$ cannot be solved, since the value of $y(n)$ cannot be known in advance.</li>
+<li><code>~</code> automatically introduces a one-sample delay in the recursive signal. This is necessary because the equation <script type="math/tex">y(n) = x(n) + y(n)</script> cannot be solved, since the value of <script type="math/tex">y(n)</script> cannot be known in advance.</li>
 </ul>
 <h2 id="sine-wave-oscillator">Sine-Wave Oscillator</h2>
 <ul>
@@ -134,15 +165,22 @@
 </ul>
 <h2 id="one-pole-filter">One-Pole Filter</h2>
 <ul>
-<li>The <a href="https://ccrma.stanford.edu/~jos/fp/One_Pole.html">one-pole filter</a> is the simplest type of recursive filter (IIR: Infinite Impulse Response). Its difference equation is: $y(n) = x(n) - a_{1}y(n-1)$.</li>
-<li>$a_{1}$ is the filter pole and can have a value between -1 (low-pass) and 1 (high-pass). In practice, $a_{1}$ can never reach -1 or 1, as this would make the filter unstable.</li>
+<li>The <a href="https://ccrma.stanford.edu/~jos/fp/One_Pole.html">one-pole filter</a> is the simplest type of recursive filter (IIR: Infinite Impulse Response). Its difference equation is: <script type="math/tex">y(n) = x(n) - a_{1}y(n-1)</script>.</li>
+<li>
+<script type="math/tex">a_{1}</script> is the filter pole and can have a value between -1 (low-pass) and 1 (high-pass). In practice, <script type="math/tex">a_{1}</script> can never reach -1 or 1, as this would make the filter unstable.</li>
 <li>This filter can be implemented simply in Faust:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 onePole(a1) = +~*(a1);
-pole = hslider(&quot;pole&quot;,0,-1,1,0.01);
+pole = hslider("pole",0,-1,1,0.01);
 process = no.noise : onePole(pole);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>Note that Faust's <a href="https://faustlibraries.grame.fr/libs/signals/#sismooth"><code>si.smooth</code></a> function is based on a normalized version of this filter:</li>
 </ul>
@@ -152,36 +190,48 @@ process = no.noise : onePole(pole);
 <ul>
 <li>Adding a longer delay to the previous filter turns it into a <a href="https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html">feedback comb filter</a>:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 fdbComb(del,a1) = +~de.delay(1024,del)*(a1);
-d = hslider(&quot;delay&quot;,0,0,1023,1);
-pole = hslider(&quot;pole&quot;,0,-1,1,0.01);
+d = hslider("delay",0,0,1023,1);
+pole = hslider("pole",0,-1,1,0.01);
 process = no.noise : fdbComb(d,pole);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
-<li>This filter behaves similarly to the feedforward comb filter studied in <a href="../session3">Session 3</a>, except that its “lobes” have a much more aggressive effect.</li>
-<li>Note that the flanger from <a href="../session3">Session 3</a> can be reimplemented using this feedback comb filter.</li>
+<li>This filter behaves similarly to the feedforward comb filter studied in <a href="../delays/">the previous lecture</a>, except that its "lobes" have a much more aggressive effect.</li>
+<li>Note that the flanger from <a href="../delays/">the previous lecture</a> can be reimplemented using this feedback comb filter.</li>
 </ul>
 <h2 id="echo">Echo</h2>
 <ul>
 <li>Increasing the delay duration of the feedback comb filter from the previous section turns it into an echo:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 echo(duration,feedback) = +~de.delay(50000,del)*(feedback)
 with{
   del = duration*ma.SR;
 };
-instrument(repeat) = ba.pulsen(1,n) &lt;: pm.djembe(50+rand*50,0.5,0.5,1)
+instrument(repeat) = ba.pulsen(1,n) <: pm.djembe(50+rand*50,0.5,0.5,1)
 with{
   n = repeat*ma.SR;
   rand(trig) = no.noise : ba.sAndH(trig : ba.impulsify);
 };
-d = hslider(&quot;duration&quot;,0.25,0,1,0.01);
-f = hslider(&quot;feedback&quot;,0.5,0,1,0.01);
+d = hslider("duration",0.25,0,1,0.01);
+f = hslider("feedback",0.5,0,1,0.01);
 process = instrument(0.25) : echo(d,f);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
-<li>A duration in seconds ($d_{s}$) can be converted into a duration in samples ($d_{n}$) using the sampling rate ($fs$) with the following formula: $d_{n} = d_{s}fs$.</li>
+<li>A duration in seconds (<script type="math/tex">d_{s}</script> can be converted into a duration in samples (<script type="math/tex">d_{n}</script> using the sampling rate (<script type="math/tex">fs</script> with the following formula: <script type="math/tex">d_{n} = d_{s}fs</script>.</li>
 </ul>
 <h2 id="a-simple-physical-model-karplusstrong">A Simple Physical Model: Karplus–Strong</h2>
 <ul>
@@ -191,20 +241,27 @@ process = instrument(0.25) : echo(d,f);
 <li>Dispersion at the ends is implemented with a low-pass filter, simulating the disappearance of high frequencies before low frequencies.</li>
 <li>One possible implementation of Karplus–Strong in Faust is:</li>
 </ul>
-<pre><code>import(&quot;stdfaust.lib&quot;);
+<p>
+<faust-editor>
+<!--
+import("stdfaust.lib");
 ks(freq,damp) = +~(de.fdelay4(1024,del) : dispersion)
 with{
   del = ma.SR/freq;
-  dispersion = _ &lt;: _,_' :&gt; /(2) : *(1-damp) ;
+  dispersion = _ <: _,_' :> /(2) : *(1-damp) ;
 };
-f = hslider(&quot;freq&quot;,300,50,2000,0.01);
-d = hslider(&quot;damping&quot;,0.01,0,1,0.01);
-gate = button(&quot;gate&quot;);
+f = hslider("freq",300,50,2000,0.01);
+d = hslider("damping",0.01,0,1,0.01);
+gate = button("gate");
 process = gate : ba.impulsify : ks(f,d);
-</code></pre>
+-->
+</faust-editor>
+</p>
+
 <ul>
 <li>Note the use of a fractional delay to ensure that the string is in tune.</li>
-</ul></div>
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script></div>
             </div>
         </div>
 

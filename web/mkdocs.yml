@@ -4,6 +4,8 @@ nav:
     - Cours:
         - ' 1. Basics ' : lectures/basics.md
         - ' 2. Signals in Faust, AM, and Subtractive Synthesis ' : lectures/signals.md
+        - ' 3. Delays, Filters, and Related Effects ' : lectures/delays.md
+        - ' 4. Recursion, IIR Filters, Echo, and Physical Modeling ' : lectures/recursion.md
     - Faust IDE: https://faustide.grame.fr
 
 theme: 
