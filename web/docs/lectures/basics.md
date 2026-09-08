@@ -128,7 +128,7 @@ The first four samples of signal \(x(n)\) are defined as:
 
 \(x(n) = \{0.432,0.547,-0.892,-0.795\}\) (so \(x(n) = x_0(n)\): yes, yes, I am a little lazy too... ;) )
 
-We want to reduce the gain of $x(n)$ by half, so we define:
+We want to reduce the gain of \(x(n)\) by half, so we define:
 
 $$
 y(n) = \frac{x(n)}{2}

@@ -1,7 +1,7 @@
 site_name: Computer Music Workshop @ UJM (M1 CCNT)
 site_description: Computer Music Workshop course at UJM
 nav:
-    - Cours:
+    - Lectures:
         - ' 1. Basics ' : lectures/basics.md
         - ' 2. Signals in Faust, AM, and Subtractive Synthesis ' : lectures/signals.md
         - ' 3. Delays, Filters, and Related Effects ' : lectures/delays.md
