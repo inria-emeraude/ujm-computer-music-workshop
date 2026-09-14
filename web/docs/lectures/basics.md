@@ -105,9 +105,8 @@ process = os.sawtooth(freq)*gain*gate;
 
 ## Assignment
 
-* This assignment must be emailed to Romain **before 23/09/2026 (9 am)**.
-* Put the answers to Problems 1 and 2 directly in the body of your email.
-* Remember to attach the project code and include the link to your demo video.
+* This assignment must be submitted using this form: <https://forms.gle/5ZC8pv3Xpu3TacL7A> **before 23/09/2026 (9 am)**.
+* Fill out the form only once. You will **not** receive a confirmation email.
 * You are not alone! Feel free to email your questions if you get stuck.
 
 ### Problem 1: Adding Two Signals (3 Points)
