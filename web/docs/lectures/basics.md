@@ -153,7 +153,7 @@ process = os.sawtooth(440 + os.osc(10)*100);
 * Think about how your instrument could fit into your own musical practice.
 * When the instrument is ready, make a short demonstration video (cell phones are fine). It may simply document the instrument, show you jamming with your new favorite instrument, etc.—the choice is yours.
 * Post the video online (e.g., YouTube).
-* Send the video link and the Faust code for your instrument to Romain.
+* Provide the link to the video as well as the Faust code using the google form provided above.
 * Most importantly, have fun!
 
 <script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script>

@@ -133,7 +133,7 @@ effect = dm.zita_light;
 
 ## Assignment: Object Generated With Faust
 
-* This assignment must be sent to me by email to Romain **before ??? (9 am)**.
+* This assignment must be submitted using this form: <https://forms.gle/DbmEtUeVNKiqxJXY8> **before 30/09/2026 (9 am)**.
 * The goal is to use the Faust online IDE's Export function to produce an "object" of your choice: a smartphone application, web application, plug-in, etc.
 * Experiment with the synthesis techniques studied in Sessions 1 and 2, and implement mappings that allow them to be controlled in subtle ways.
 * Put yourself in the shoes of a “digital instrument maker” and build a meaningful instrument or "sound toy."
@@ -141,6 +141,6 @@ effect = dm.zita_light;
 * Feel free to go beyond what is required and challenge yourself! :)
 * When your instrument is ready, make a short demonstration video (cell phones are fine).
 * Post the video online (e.g., YouTube).
-* Send me the video link and the Faust code for your instrument to Romain.
+* Provide the link to the video as well as the Faust code using the google form provided above.
 
 <script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script>
