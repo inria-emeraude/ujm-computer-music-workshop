@@ -138,10 +138,10 @@ process = no.noise : flanger(freq,depth,ff);
 </faust-editor>
 </p>
 
-## Exporting a Faust Program as a Plug-in With JUCE
+## Exporting a Faust Program as a Plug-in With JUCE (Bonus)
 
 * Install [JUCE](https://juce.com/).
-* Install Visual Studio on Windows or Xcode on macOS.
+* Install Visual Studio on Windows or XCode on macOS.
 * Ensure that the "Global Paths" (`File/Global Paths`) are configured correctly in the [Projucer](https://juce.com/download/).
 * Choose the `Juce/plug-in` export target in the Faust IDE.
 * Open the generated project with the Projucer.
@@ -152,7 +152,7 @@ process = no.noise : flanger(freq,depth,ff);
 
 ## Assignment
 
-* This assignment must be sent to Romain by email **before ??? (9:00 am)**.
+* This assignment must be submitted using this form: <https://forms.gle/xEcZ8V6suorhSyJW6> **before October 15th (9:00 am)**.
 
 ### Plug-in
 
@@ -167,6 +167,6 @@ process = no.noise : flanger(freq,depth,ff);
 
 ### Final Project
 
-* Prepare three final-project ideas that you will present in class on ???.
+* Prepare three final-project ideas that you will present in class on October 15th.
 
 <script src="https://cdn.jsdelivr.net/npm/@grame/faust-web-component@0.6.1/dist/faust-web-component.js"></script>
