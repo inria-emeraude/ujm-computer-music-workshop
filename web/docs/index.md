@@ -35,15 +35,13 @@ All the course material is available on this website in the `lectures` tab in th
 
 The course is organized into 4 lectures spread out over 6 sessions. Take home assignments are assigned at the end of each lecture and are due 2 weeks later. 
 
-<!--
 ## Final Project
 
-* **Submission deadline: January 31, 2026**
+* **Submission deadline: December 19, 2026**
 * **Objectives:** The goal of this project is to create a tool/instrument in Faust and use it in a musical context (e.g., a piece, installation, popular music, etc.). This tool/instrument may target any Faust architecture (e.g., a Max/MSP or Pure Data object, a VST/AU plug-in, an Android/iOS application, etc.).
 * **Deliverables:**
     * A `.zip` package containing the source code of your tool and a README (in English) explaining how to use and compile it (e.g., with the online editor), etc. This package will be distributed on the course website so that others can benefit from it. The goal is therefore to produce something polished and potentially useful to other community members.
     * A link (e.g., YouTube) to a demonstration video organized in two parts: first, a demo of your tool/instrument; second, a short piece in which the tool/instrument is used. The piece may also be recorded live during a jam session, band rehearsal, etc. Ideally, the commentary in the video should be in English. Feel free to use text if you do not feel comfortable speaking. Once again, the goal is for your work to be seen and benefit as many people as possible.
--->
 
 ## Assessment Criteria
 
